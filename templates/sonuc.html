@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ baslik }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .movie-item {
+            background-color: #f9f9f9;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+            .movie-item:hover {
+                background-color: #e6e6e6;
+            }
+
+        .movie-title {
+            font-size: 18px;
+            color: #007bff;
+            font-weight: bold;
+            display: block;
+        }
+
+        .movie-overview {
+            margin-top: 10px;
+            color: #333;
+            display: none;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+            .back-button a {
+                text-decoration: none;
+                color: #fff;
+                background-color: #007bff;
+                padding: 10px 20px;
+                border-radius: 5px;
+            }
+
+                .back-button a:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+
+    <h2>{{ baslik }}</h2>
+
+    <ul>
+        {% for item in sonuc %}
+        <li class="movie-item">
+            <span class="movie-title">{{ item.title }}</span>
+            <div class="movie-overview">{{ item.overview }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="back-button">
+        <a href="{{ url_for('index', lang=lang_code) }}">{{ lang["select_option"] }}</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('.movie-item');
+            items.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    const overview = this.querySelector('.movie-overview');
+                    overview.style.display = (overview.style.display === 'block') ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
