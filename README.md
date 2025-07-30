@@ -16,3 +16,17 @@ This is a simple movie recommendation system built with Python and Flask.
 - HTML, CSS, JS (Vanilla)
 
 ## Project Structure
+
+/movie-recommendation-system
+├── app.py
+├── templates/
+│ ├── index.html
+│ └── sonuc.html
+├── static/
+├── LICENSE
+└── README.md
+
+
+## License
+This project is licensed under the MIT License.
+
